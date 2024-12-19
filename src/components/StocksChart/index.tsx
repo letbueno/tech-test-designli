@@ -10,7 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { useStockContext } from "../../assets/contexts/stockContext";
+import { useStockContext } from "../../contexts/stockContext";
 import { Box } from "@mui/material";
 
 ChartJS.register(

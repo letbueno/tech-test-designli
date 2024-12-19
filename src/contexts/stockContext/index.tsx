@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { useNotification } from "../../../services/useNotification";
-import { Stock } from "../../../types/Stock";
-import { StockPriceAlert } from "../../../types/StockPriceAlert";
-import { setupWebSocket } from "../../../services/useSocket";
+import { useNotification } from "../../services/useNotification";
+import { Stock } from "../../types/Stock";
+import { StockPriceAlert } from "../../types/StockPriceAlert";
+import { setupWebSocket } from "../../services/useSocket";
 
 export interface IStockContext {
   priceAlert?: number;

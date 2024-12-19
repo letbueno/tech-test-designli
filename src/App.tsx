@@ -1,5 +1,5 @@
 import { createTheme, ThemeProvider } from "@mui/material";
-import StockProvider from "./assets/contexts/stockContext";
+import StockProvider from "./contexts/stockContext";
 import Home from "./pages/Home";
 
 const darkTheme = createTheme({

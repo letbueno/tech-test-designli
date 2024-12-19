@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 
-import { useStockContext } from "../../assets/contexts/stockContext";
+import { useStockContext } from "../../contexts/stockContext";
 
 type TopCardProps = {
   name: string;

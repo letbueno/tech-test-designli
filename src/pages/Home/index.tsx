@@ -2,7 +2,7 @@ import { Box, Container, Stack, Typography } from "@mui/material";
 import TopCards from "../../components/TopCards";
 import StocksAlertForm from "../../components/StocksAlertForm";
 import StocksChart from "../../components/StocksChart";
-import { useStockContext } from "../../assets/contexts/stockContext";
+import { useStockContext } from "../../contexts/stockContext";
 import Loading from "../Loading";
 
 function Home() {

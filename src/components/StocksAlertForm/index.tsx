@@ -11,7 +11,7 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
-import { useStockContext } from "../../assets/contexts/stockContext";
+import { useStockContext } from "../../contexts/stockContext";
 import { useNotification } from "../../services/useNotification";
 import { StockPriceAlert } from "../../types/StockPriceAlert";
 import StocksAlertList from "../StocksAlertList";

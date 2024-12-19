@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Button, List, ListItem } from "@mui/material";
-import { useStockContext } from "../../assets/contexts/stockContext";
+import { useStockContext } from "../../contexts/stockContext";
 
 const StocksAlertList: React.FC = () => {
   const { stockAlerts, setStockAlerts } = useStockContext();

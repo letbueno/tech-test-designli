@@ -1,6 +1,12 @@
 # 📖 Tech Test Designli - Stock Dashboard
 
-The Stock Dashboard is a React and TypeScript-based application designed to monitor and visualize real-time stock data using the Finnhub Stock API and WebSocket. It allows users to track stock prices, set price alerts, and analyze trends through an interactive interface
+The Stock Dashboard is a React and TypeScript-based application designed to monitor and visualize real-time stock data using the Finnhub Stock API and WebSocket. It allows users to track stock prices, set price alerts, and analyze trends through an interactive interface.
+
+
+
+https://github.com/user-attachments/assets/c800e5de-269b-4bec-a895-4bf5132ba2df
+
+
 
 ## 📝 Features
 

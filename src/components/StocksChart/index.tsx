@@ -12,6 +12,7 @@ import {
 } from "chart.js";
 import { useStockContext } from "../../contexts/stockContext";
 import { Box, Typography } from "@mui/material";
+import { blue } from "@mui/material/colors";
 
 ChartJS.register(
   CategoryScale,
@@ -25,16 +26,16 @@ ChartJS.register(
 
 const StocksChart: React.FC = () => {
   const { storedStocks } = useStockContext();
+
   const chartData = {
     labels: storedStocks.map((stock) => stock.s),
     datasets: [
       {
         label: "Stock Prices (USD)",
         data: storedStocks.map((stock) => stock.p),
-        borderColor: "rgba(75, 192, 192, 1)",
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderColor: blue[200],
+        backgroundColor: `${blue[200]}33`,
         borderWidth: 2,
-        fontWeight: 600,
         tension: 0.2,
       },
     ],
@@ -46,10 +47,24 @@ const StocksChart: React.FC = () => {
       legend: {
         display: true,
         position: "top" as const,
+        labels: {
+          color: "white",
+        },
       },
       title: {
         display: false,
-        text: "Stock Prices in USD",
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: "white",
+        },
+      },
+      y: {
+        ticks: {
+          color: "white",
+        },
       },
     },
   };

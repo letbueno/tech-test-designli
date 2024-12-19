@@ -10,7 +10,6 @@ The Stock Dashboard is a React and TypeScript-based application designed to moni
 - Local Storage Persistence: Store stock data in local storage to ensure historical data persists when the app is reopened.
 - Push Notifications: Trigger web push notifications when stock prices fall below alert levels.
 
-
 ## 🔧 Technology Used
 
 - React & TypeScript: Frontend framework and language for building a reliable and efficient interface.
@@ -20,14 +19,12 @@ The Stock Dashboard is a React and TypeScript-based application designed to moni
 - [Finnhub Stock API](https://finnhub.io/): A real-time stock market API that provides detailed information on stock prices, quotes, financial data, and more, essential for market analysis and financial tracking applications.
 - [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/): Tools for enforcing consistent coding style and best practices, helping to maintain high-quality, readable code.
 
-
-
 ## 📊 Project Structure
 
 - src/components: Stores reusable UI components, including elements such as the Stock Alert List and Stock Card, all built with Material-UI icons.
 - src/contexts: Contains the Stock Context, managing shared state and logic across the application.
 - src/services: Includes services for sending web notifications through the useNotification service and managing WebSocket connections with useSocket.
-- src/types: Defines custom types and interfaces such as StockAlertPrice, Stock types used across the application.
+- src/types: Defines custom types and interfaces such as StockPriceAlert, Stock types used across the application.
 - src/pages: Contains the main page components, such as Home and Loading Page.
 
 ## 🖥️ Local development
@@ -39,6 +36,7 @@ git clone git@github.com:letbueno/tech-test-designli.git
 ```
 
 #### Copy the .env.example to a .env file
+
 This project uses the Finnhub Stock API to fetch real-time the stock data. To access the API, you need to obtain an API key from the [Finnhub Stock API](https://finnhub.io/). Once you have your API key, copy the .env.example file to .env to configure your local environment:
 
 ```shell

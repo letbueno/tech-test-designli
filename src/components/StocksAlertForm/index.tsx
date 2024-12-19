@@ -96,14 +96,14 @@ const StocksAlertForm: React.FC = () => {
         </FormControl>
 
         <TextField
-          label="Price Alert"
+          label="Price alert"
           type="text"
           value={priceAlert}
           onChange={(e) => handlePriceChange(e.target.value)}
           fullWidth
         />
         <Button type="submit" variant="outlined" color="primary">
-          Add alert price
+          Add price alert
         </Button>
 
         {stockAlerts && stockAlerts.length > 0 && <StocksAlertList />}

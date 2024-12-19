@@ -46,7 +46,7 @@ describe("Home Component", () => {
 
     render(<Home />);
 
-    expect(screen.getByText("Stock Tracker")).toBeInTheDocument();
+    expect(screen.getByText("Stock Tracker Dashboard")).toBeInTheDocument();
     expect(screen.getByText("Stock Cards")).toBeInTheDocument();
     expect(screen.getByText("Stocks Chart")).toBeInTheDocument();
   });

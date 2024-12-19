@@ -23,7 +23,7 @@ function Home() {
         gap={4}
       >
         <Typography variant="h4" color="text.primary">
-          Stock Tracker
+          Stock Tracker Dashboard
         </Typography>
         <Stack
           direction="row"

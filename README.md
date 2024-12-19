@@ -69,8 +69,17 @@ yarn dev
 
 ## 🧪 Test
 
-For running the test suite
+For running the test suite:
 
 ```shell
 yarn test
 ```
+
+## 🎨 Code linting
+
+To check the code quality:
+
+```shell
+yarn lint
+```
+

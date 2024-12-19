@@ -35,10 +35,13 @@ function StockProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setupWebSocket(setStoredStocks);
-    if (selectedStock === "") {
-      setSelectedStock(storedStocks[0]?.s || "");
+  }, [setStoredStocks]);
+
+  useEffect(() => {
+    if (selectedStock === "" && storedStocks.length > 0) {
+      setSelectedStock(storedStocks[0]!.s);
     }
-  }, [setStoredStocks, storedStocks, selectedStock]);
+  }, [selectedStock, storedStocks]);
 
   useEffect(() => {
     storedStocks.forEach((stock: Stock) => {

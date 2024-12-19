@@ -8,12 +8,13 @@ import Loading from "../Loading";
 function Home() {
   const { storedStocks } = useStockContext();
 
+  console.log(storedStocks);
   if (storedStocks.length === 0) {
     return <Loading />;
   }
 
   return (
-    <Container maxWidth="xl" sx={{ mt: 6, justifyContent: "center" }}>
+    <Container maxWidth="lg" sx={{ mt: 6, justifyContent: "center" }}>
       <Box
         sx={{
           display: "flex",
@@ -22,7 +23,7 @@ function Home() {
         }}
         gap={4}
       >
-        <Typography variant="h4" color="text.primary" align="center">
+        <Typography variant="h4" color="text.primary">
           Stock Tracker
         </Typography>
         <Stack
@@ -34,7 +35,6 @@ function Home() {
         >
           <Box
             sx={{
-              flex: 1,
               display: "flex",
               flexDirection: "column",
               gap: 2,
@@ -44,10 +44,8 @@ function Home() {
           </Box>
           <Box
             sx={{
-              flex: 2,
               display: "flex",
               flexDirection: "column",
-              gap: 5,
             }}
           >
             <TopCards />

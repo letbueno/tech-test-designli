@@ -8,13 +8,13 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
-  Stack,
   TextField,
 } from "@mui/material";
-import { useStockContext } from "../../contexts/stockContext";
+
 import { useNotification } from "../../services/useNotification";
-import { StockPriceAlert } from "../../types/StockPriceAlert";
 import StocksAlertList from "../StocksAlertList";
+import { useStockContext } from "../../contexts/stockContext";
+import { StockPriceAlert } from "../../types/StockPriceAlert";
 
 const StocksAlertForm: React.FC = () => {
   const {
@@ -93,18 +93,17 @@ const StocksAlertForm: React.FC = () => {
           </Select>
         </FormControl>
 
-        <Stack direction="row" spacing={2}>
-          <TextField
-            label="Price Alert"
-            type="text"
-            value={priceAlert}
-            onChange={(e) => handlePriceChange(e.target.value)}
-            fullWidth
-          />
-          <Button type="submit" variant="outlined" color="primary">
-            Add alert price
-          </Button>
-        </Stack>
+        <TextField
+          label="Price Alert"
+          type="text"
+          value={priceAlert}
+          onChange={(e) => handlePriceChange(e.target.value)}
+          fullWidth
+        />
+        <Button type="submit" variant="outlined" color="primary">
+          Add alert price
+        </Button>
+
         {stockAlerts.length > 0 && <StocksAlertList />}
       </Box>
     </Container>

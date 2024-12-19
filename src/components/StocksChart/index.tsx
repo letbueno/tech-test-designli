@@ -11,7 +11,7 @@ import {
   Legend,
 } from "chart.js";
 import { useStockContext } from "../../contexts/stockContext";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 ChartJS.register(
   CategoryScale,
@@ -55,7 +55,10 @@ const StocksChart: React.FC = () => {
   };
 
   return (
-    <Box sx={{ mt: 6, mb: 6, width: "90%" }} alignSelf={"center"}>
+    <Box sx={{ mt: 6, mb: 6, width: "100%" }} alignSelf={"center"}>
+      <Typography variant="h4" color="text.primary">
+        Stocks Price in USD
+      </Typography>
       <Line data={chartData} options={chartOptions} />
     </Box>
   );

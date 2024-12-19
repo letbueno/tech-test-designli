@@ -50,7 +50,7 @@ const TopCards: React.FC = () => {
         const priceAlert =
           stockAlerts.find(({ symbol: s }) => s === stock.s)?.priceAlert || 0;
         return (
-          <Grid size={3} key={stock.s}>
+          <Grid size={4} key={stock.s}>
             <TopCard
               key={stock.s}
               name={stock.s}

@@ -1,13 +1,13 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { useNotification } from "../../../hooks/useNotification";
+import { useNotification } from "../../../services/useNotification";
 import { Stock } from "../../../types/Stock";
-import { StockAlertPrice } from "../../../types/StockAlertPrice";
+import { StockPriceAlert } from "../../../types/StockPriceAlert";
 import { setupWebSocket } from "../../../services/useSocket";
 
 export interface IStockContext {
-  alertPrice?: number;
-  stockAlerts: StockAlertPrice[];
-  setStockAlerts: (alerts: StockAlertPrice[]) => Promise<void> | void;
+  priceAlert?: number;
+  stockAlerts: StockPriceAlert[];
+  setStockAlerts: (alerts: StockPriceAlert[]) => Promise<void> | void;
   storedStocks: Stock[];
   setStoredStocks: (stocks: Stock[]) => Promise<void> | void;
   selectedStock: string;
@@ -18,39 +18,43 @@ export const StockContext = createContext<IStockContext>({} as IStockContext);
 StockContext.displayName = "StockContext";
 
 function StockProvider({ children }: { children: React.ReactNode }) {
-  const [stockAlerts, setStockAlerts] = useState<StockAlertPrice[]>(
+  const [stockAlerts, setStockAlerts] = useState<StockPriceAlert[]>(
     JSON.parse(localStorage.getItem("stockAlerts") || "[]")
   );
-
-  const { showNotification } = useNotification();
   const [storedStocks, setStoredStocks] = useState(
     JSON.parse(localStorage.getItem("webSocketData") || "[]")
   );
   const [selectedStock, setSelectedStock] = useState<string>(
-    storedStocks[0]?.s
+    JSON.parse(localStorage.getItem("webSocketData") || "[]")[0]?.s || ""
   );
-
   const [sentNotifications, setSentNotifications] = useState<
     Record<string, number>
   >({});
 
+  const { showNotification } = useNotification();
+
   useEffect(() => {
     setupWebSocket(setStoredStocks);
-  }, [setStoredStocks]);
+    if (selectedStock === "") {
+      setSelectedStock(storedStocks[0]?.s || "");
+    }
+  }, [setStoredStocks, storedStocks, selectedStock]);
 
   useEffect(() => {
     storedStocks.forEach((stock: Stock) => {
       const alert = stockAlerts.find(
-        (alert: StockAlertPrice) => alert.symbol === stock.s
+        (alert: StockPriceAlert) => alert.symbol === stock.s
       );
 
-      if (alert && stock.p < alert.alertPrice) {
+      if (alert && stock.p < alert.priceAlert) {
         const lastNotification = sentNotifications[stock.s] || 0;
         if (Date.now() - lastNotification > 10000) {
-          console.log("Notification sent");
           showNotification({
             title: `Stock Alert: ${stock.s}`,
-            body: `Current price: ${stock.p}`,
+            body: `Current price: ${stock.p.toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}`,
           });
           setSentNotifications((prev) => ({
             ...prev,

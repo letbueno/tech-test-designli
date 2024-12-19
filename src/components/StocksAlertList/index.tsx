@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, IconButton, List, ListItem } from "@mui/material";
+import { Box, Button, List, ListItem } from "@mui/material";
 import { useStockContext } from "../../assets/contexts/stockContext";
 
 const StocksAlertList: React.FC = () => {
@@ -29,14 +29,17 @@ const StocksAlertList: React.FC = () => {
           >
             <span>
               {alert.symbol}:{" "}
-              {Number(alert.alertPrice).toLocaleString("en-US", {
+              {Number(alert.priceAlert).toLocaleString("en-US", {
                 style: "currency",
                 currency: "USD",
               })}
             </span>
-            <IconButton onClick={() => handleRemoveAlert(alert.symbol)}>
+            <Button
+              onClick={() => handleRemoveAlert(alert.symbol)}
+              color="error"
+            >
               X
-            </IconButton>
+            </Button>
           </ListItem>
         ))}
       </List>

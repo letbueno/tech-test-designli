@@ -21,7 +21,6 @@ export const useNotification = () => {
     body: string;
   }) => {
     if (requestNotificationPermission()) {
-      console.log(requestNotificationPermission());
       new Notification(title, { body });
     }
   };

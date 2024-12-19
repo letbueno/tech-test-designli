@@ -49,13 +49,13 @@ const StocksChart: React.FC = () => {
       },
       title: {
         display: false,
-        text: "Stock Prices in USD",
+        text: "Stockx Prices in USD",
       },
     },
   };
 
   return (
-    <Box sx={{ mt: 6, mb: 6 }}>
+    <Box sx={{ mt: 6, mb: 6, width: "90%" }} alignSelf={"center"}>
       <Line data={chartData} options={chartOptions} />
     </Box>
   );

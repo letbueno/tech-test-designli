@@ -2,8 +2,16 @@ import { Box, Container, Stack, Typography } from "@mui/material";
 import TopCards from "../../components/TopCards";
 import StocksAlertForm from "../../components/StocksAlertForm";
 import StocksChart from "../../components/StocksChart";
+import { useStockContext } from "../../assets/contexts/stockContext";
+import Loading from "../Loading";
 
 function Home() {
+  const { storedStocks } = useStockContext();
+
+  if (storedStocks.length === 0) {
+    return <Loading />;
+  }
+
   return (
     <Container maxWidth="xl" sx={{ mt: 6, justifyContent: "center" }}>
       <Box
@@ -14,7 +22,7 @@ function Home() {
         }}
         gap={4}
       >
-        <Typography variant="h4" color="text.primary" sx={{ mb: 4 }}>
+        <Typography variant="h4" color="text.primary" align="center">
           Stock Tracker
         </Typography>
         <Stack

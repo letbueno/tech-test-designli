@@ -12,8 +12,8 @@ import {
   TextField,
 } from "@mui/material";
 import { useStockContext } from "../../assets/contexts/stockContext";
-import { useNotification } from "../../hooks/useNotification";
-import { StockAlertPrice } from "../../types/StockAlertPrice";
+import { useNotification } from "../../services/useNotification";
+import { StockPriceAlert } from "../../types/StockPriceAlert";
 import StocksAlertList from "../StocksAlertList";
 
 const StocksAlertForm: React.FC = () => {
@@ -26,16 +26,16 @@ const StocksAlertForm: React.FC = () => {
   } = useStockContext();
   const { requestNotificationPermission } = useNotification();
 
-  const [alertPrice, setAlertPrice] = useState<string>("");
+  const [priceAlert, setpriceAlert] = useState<string>("");
 
   useEffect(() => {
     const savedAlerts = JSON.parse(localStorage.getItem("stockAlerts") || "[]");
 
-    const savedAlertPrice =
+    const savedpriceAlert =
       savedAlerts.find(
-        (alert: StockAlertPrice) => alert.symbol === selectedStock
-      )?.alertPrice || "";
-    setAlertPrice(savedAlertPrice.toString());
+        (alert: StockPriceAlert) => alert.symbol === selectedStock
+      )?.priceAlert || "";
+    setpriceAlert(savedpriceAlert.toString());
   }, [selectedStock]);
 
   const handleSymbolChange = (event: SelectChangeEvent<string>) => {
@@ -43,11 +43,11 @@ const StocksAlertForm: React.FC = () => {
     setSelectedStock(newSelectedStock);
   };
 
-  const handleSetAlertPrices = () => {
-    if (selectedStock && alertPrice !== "") {
+  const handleSetpriceAlerts = () => {
+    if (selectedStock && priceAlert !== "") {
       const newAlerts = [
         ...stockAlerts.filter((alert) => alert.symbol !== selectedStock),
-        { symbol: selectedStock, alertPrice: Number(alertPrice) },
+        { symbol: selectedStock, priceAlert: Number(priceAlert) },
       ];
 
       setStockAlerts(newAlerts);
@@ -58,7 +58,7 @@ const StocksAlertForm: React.FC = () => {
   const handlePriceChange = (value: string) => {
     const regex = /^\d*\.?\d*$/;
     if (value === "" || regex.test(value)) {
-      setAlertPrice(value);
+      setpriceAlert(value);
     }
   };
 
@@ -68,7 +68,7 @@ const StocksAlertForm: React.FC = () => {
         component="form"
         onSubmit={(e) => {
           e.preventDefault();
-          handleSetAlertPrices();
+          handleSetpriceAlerts();
         }}
         sx={{
           display: "flex",
@@ -97,16 +97,15 @@ const StocksAlertForm: React.FC = () => {
           <TextField
             label="Price Alert"
             type="text"
-            value={alertPrice}
+            value={priceAlert}
             onChange={(e) => handlePriceChange(e.target.value)}
             fullWidth
           />
-          <Button type="submit" variant="contained" color="primary">
+          <Button type="submit" variant="outlined" color="primary">
             Add alert price
           </Button>
         </Stack>
-
-        <StocksAlertList />
+        {stockAlerts.length > 0 && <StocksAlertList />}
       </Box>
     </Container>
   );

@@ -43,6 +43,7 @@ export function setupWebSocket(setStoredStocks: (stocks: Stock[]) => void) {
       }
     });
     setStoredStocks(storedStocks);
+
     localStorage.setItem("webSocketData", JSON.stringify(storedStocks));
   };
 

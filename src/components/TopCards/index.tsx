@@ -7,17 +7,17 @@ import { useStockContext } from "../../assets/contexts/stockContext";
 type TopCardProps = {
   name: string;
   currentPrice: number;
-  alertPrice: number;
+  priceAlert: number;
   percentageChange: number;
 };
 
 const TopCard: React.FC<TopCardProps> = ({
   name,
   currentPrice,
-  alertPrice,
+  priceAlert,
   percentageChange,
 }) => {
-  const textColor = currentPrice >= alertPrice ? "green" : "red";
+  const textColor = currentPrice >= priceAlert ? "green" : "red";
   const percentageChangeColor = percentageChange >= 0 ? "green" : "red";
 
   return (
@@ -27,7 +27,10 @@ const TopCard: React.FC<TopCardProps> = ({
           {name}
         </Typography>
         <Typography variant="h6" sx={{ color: textColor }}>
-          ${currentPrice.toFixed(2)}
+          {currentPrice.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+          })}
         </Typography>
         <Typography variant="subtitle2" sx={{ color: percentageChangeColor }}>
           {percentageChange >= 0 ? "+" : ""}
@@ -44,15 +47,15 @@ const TopCards: React.FC = () => {
   return (
     <Grid container spacing={{ xs: 1, sm: 2, md: 3 }}>
       {storedStocks.map((stock) => {
-        const alertPrice =
-          stockAlerts.find(({ symbol: s }) => s === stock.s)?.alertPrice || 0;
+        const priceAlert =
+          stockAlerts.find(({ symbol: s }) => s === stock.s)?.priceAlert || 0;
         return (
           <Grid size={3} key={stock.s}>
             <TopCard
               key={stock.s}
               name={stock.s}
               currentPrice={stock.p}
-              alertPrice={Number(alertPrice)}
+              priceAlert={Number(priceAlert)}
               percentageChange={stock.v}
             />
           </Grid>

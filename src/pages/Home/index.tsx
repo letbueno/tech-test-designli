@@ -1,5 +1,5 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
-import TopCards from "../../components/TopCards";
+import StockCards from "../../components/StockCards";
 import StocksAlertForm from "../../components/StocksAlertForm";
 import StocksChart from "../../components/StocksChart";
 import { useStockContext } from "../../contexts/stockContext";
@@ -8,7 +8,6 @@ import Loading from "../Loading";
 function Home() {
   const { storedStocks } = useStockContext();
 
-  console.log(storedStocks);
   if (storedStocks.length === 0) {
     return <Loading />;
   }
@@ -48,7 +47,7 @@ function Home() {
               flexDirection: "column",
             }}
           >
-            <TopCards />
+            <StockCards />
           </Box>
         </Stack>
         <StocksChart />

@@ -1,50 +1,64 @@
-# React + TypeScript + Vite
+# 📖 Tech Test Designli - Stock Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Stock Dashboard is a React and TypeScript-based application designed to monitor and visualize real-time stock data using the Finnhub Stock API and WebSocket. It allows users to track stock prices, set price alerts, and analyze trends through an interactive interface
 
-Currently, two official plugins are available:
+## 📝 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Real-Time Stock Monitoring: Continuously fetch real-time stock data from Finnhub APIs and WebSocket connections to display up-to-date stock information and updates.
+- Stocks Alert Form: A form with dropdown to select a stock to monitor and an input field to set price alerts.
+- Stock Prices Chart: Display a dynamic line chart that visualizes stock price trends over time, updating in real-time as new data is received.
+- Local Storage Persistence: Store stock data in local storage to ensure historical data persists when the app is reopened.
+- Push Notifications: Trigger web push notifications when stock prices fall below alert levels.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🔧 Technology Used
 
-- Configure the top-level `parserOptions` property like this:
+- React & TypeScript: Frontend framework and language for building a reliable and efficient interface.
+- Cache Management (Local Storage): Efficiently caches data to reduce API requests and improve performance.
+- WebSocket: A communication protocol that provides real-time, two-way data exchange between the client and Finnhub. It ensures instant updates for stock prices and market activity, enabling the application to respond dynamically to market changes without requiring repeated API calls.
+- [Material UI](https://mui.com/material-ui/getting-started/): A popular and flexible component library for React, providing a wide variety of customizable and pre-designed UI components.
+- [Finnhub Stock API](https://finnhub.io/): A real-time stock market API that provides detailed information on stock prices, quotes, financial data, and more, essential for market analysis and financial tracking applications.
+- [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/): Tools for enforcing consistent coding style and best practices, helping to maintain high-quality, readable code.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+
+
+## 📊 Project Structure
+
+- src/components: Stores reusable UI components, including elements such as the Stock Alert List and Stock Card, all built with Material-UI icons.
+- src/contexts: Contains the Stock Context, managing shared state and logic across the application.
+- src/services: Includes services for sending web notifications through the useNotification service and managing WebSocket connections with useSocket.
+- src/types: Defines custom types and interfaces such as StockAlertPrice, Stock types used across the application.
+- src/pages: Contains the main page components, such as Home and Loading Page.
+
+## 🖥️ Local development
+
+#### Clone the repo:
+
+```shell
+git clone git@github.com:letbueno/tech-test-designli.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+#### Copy the .env.example to a .env file
+This project uses the Finnhub Stock API to fetch real-time the stock data. To access the API, you need to obtain an API key from the [Finnhub Stock API](https://finnhub.io/). Once you have your API key, copy the .env.example file to .env to configure your local environment:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```shell
+cp .env.example .env
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+In the **.env** file, replace VITE_API_KEY with your actual API key:
+
+```
+VITE_API_KEY=YOUR_API_KEY
+```
+
+### Install the application:
+
+```shell
+yarn install
+```
+
+### Start the app:
+
+```shell
+yarn dev
 ```

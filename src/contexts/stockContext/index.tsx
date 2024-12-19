@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { useNotification } from "../../services/useNotification";
 import { Stock } from "../../types/Stock";
 import { StockPriceAlert } from "../../types/StockPriceAlert";
-import { setupWebSocket } from "../../services/useSocket";
+import { setupWebSocket } from "../../services/setupWebSocket";
 
 export interface IStockContext {
   priceAlert?: number;

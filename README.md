@@ -23,7 +23,7 @@ The Stock Dashboard is a React and TypeScript-based application designed to moni
 
 - src/components: Stores reusable UI components, including elements such as the Stock Alert List and Stock Card, all built with Material-UI icons.
 - src/contexts: Contains the Stock Context, managing shared state and logic across the application.
-- src/services: Includes services for sending web notifications through the useNotification service and managing WebSocket connections with useSocket.
+- src/services: Includes services for sending web notifications through the useNotification service and managing WebSocket connections with setupWebSocket.
 - src/types: Defines custom types and interfaces such as StockPriceAlert, Stock types used across the application.
 - src/pages: Contains the main page components, such as Home and Loading Page.
 

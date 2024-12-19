@@ -16,7 +16,7 @@ import { useNotification } from "../../hooks/useNotification";
 import { StockAlertPrice } from "../../types/StockAlertPrice";
 import StocksAlertList from "../StocksAlertList";
 
-const StockAlertForm: React.FC = () => {
+const StocksAlertForm: React.FC = () => {
   const {
     selectedStock,
     setSelectedStock,
@@ -112,4 +112,4 @@ const StockAlertForm: React.FC = () => {
   );
 };
 
-export default StockAlertForm;
+export default StocksAlertForm;

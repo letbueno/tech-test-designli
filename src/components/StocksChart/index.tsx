@@ -23,7 +23,7 @@ ChartJS.register(
   Legend
 );
 
-const StockChart: React.FC = () => {
+const StocksChart: React.FC = () => {
   const { storedStocks } = useStockContext();
   const chartData = {
     labels: storedStocks.map((stock) => stock.s),
@@ -61,4 +61,4 @@ const StockChart: React.FC = () => {
   );
 };
 
-export default StockChart;
+export default StocksChart;

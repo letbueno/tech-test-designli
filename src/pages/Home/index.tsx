@@ -1,7 +1,7 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import TopCards from "../../components/TopCards";
-import StockAlertForm from "../../components/StockAlertForm";
-import StockChart from "../../components/StockChart";
+import StocksAlertForm from "../../components/StocksAlertForm";
+import StocksChart from "../../components/StocksChart";
 
 function Home() {
   return (
@@ -32,7 +32,7 @@ function Home() {
               gap: 2,
             }}
           >
-            <StockAlertForm />
+            <StocksAlertForm />
           </Box>
           <Box
             sx={{
@@ -45,7 +45,7 @@ function Home() {
             <TopCards />
           </Box>
         </Stack>
-        <StockChart />
+        <StocksChart />
       </Box>
     </Container>
   );

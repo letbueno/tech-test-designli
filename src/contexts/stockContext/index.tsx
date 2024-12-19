@@ -50,8 +50,9 @@ function StockProvider({ children }: { children: React.ReactNode }) {
       );
 
       if (alert && stock.p < alert.priceAlert) {
+        console.log(`Stock Alert: ${stock.s}`);
         const lastNotification = sentNotifications[stock.s] || 0;
-        if (Date.now() - lastNotification > 10000) {
+        if (Date.now() - lastNotification > 15000) {
           showNotification({
             title: `Stock Alert: ${stock.s}`,
             body: `Current price: ${stock.p.toLocaleString("en-US", {

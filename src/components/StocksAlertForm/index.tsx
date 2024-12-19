@@ -83,7 +83,9 @@ const StocksAlertForm: React.FC = () => {
             id="demo-simple-select"
             value={selectedStock}
             onChange={handleSymbolChange}
+            defaultValue=""
             label="Stock Symbol"
+            data-testid="stock-symbol-select"
           >
             {storedStocks.map((stock) => (
               <MenuItem key={stock.s} value={stock.s}>
@@ -104,7 +106,7 @@ const StocksAlertForm: React.FC = () => {
           Add alert price
         </Button>
 
-        {stockAlerts.length > 0 && <StocksAlertList />}
+        {stockAlerts && stockAlerts.length > 0 && <StocksAlertList />}
       </Box>
     </Container>
   );

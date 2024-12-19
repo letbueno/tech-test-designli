@@ -37,6 +37,7 @@ const StocksAlertList: React.FC = () => {
             <Button
               onClick={() => handleRemoveAlert(alert.symbol)}
               color="error"
+              data-testid={`remove-alert-${alert.symbol}`}
             >
               X
             </Button>

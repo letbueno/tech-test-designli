@@ -59,7 +59,11 @@ const StocksChart: React.FC = () => {
       <Typography variant="h4" color="text.primary">
         Stock Prices in USD
       </Typography>
-      <Line data={chartData} options={chartOptions} />
+      <Line
+        data={chartData}
+        options={chartOptions}
+        data-testid="chartjs-line-chart"
+      />
     </Box>
   );
 };

@@ -3,7 +3,6 @@ import { Mock, vi } from "vitest";
 import StocksAlertList from ".";
 import { useStockContext } from "../../contexts/stockContext";
 
-// Mock useStockContext
 vi.mock("../../contexts/stockContext", () => ({
   useStockContext: vi.fn(),
 }));

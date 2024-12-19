@@ -62,3 +62,11 @@ yarn install
 ```shell
 yarn dev
 ```
+
+## 🧪 Test
+
+For running the test suite
+
+```shell
+yarn test
+```
